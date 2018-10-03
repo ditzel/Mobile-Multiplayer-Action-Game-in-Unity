@@ -9,7 +9,6 @@ namespace DitzeGames.MobileJoystick
     /// </summary>
     public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
-        protected Vector2 nullPosition;
         protected RectTransform Background;
         protected bool Pressed;
         protected int PointerId;
@@ -27,7 +26,6 @@ namespace DitzeGames.MobileJoystick
                 Handle = transform.GetChild(0).GetComponent<RectTransform>();
             Background = GetComponent<RectTransform>();
             Background.pivot = new Vector2(0.5f, 0.5f);
-            nullPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, Background.position);
             Pressed = false;
         }
 
@@ -35,7 +33,7 @@ namespace DitzeGames.MobileJoystick
         {
             if (Pressed)
             {
-                Vector2 direction = (PointerId >= 0 && PointerId < Input.touches.Length) ? Input.touches[PointerId].position - nullPosition : new Vector2(Input.mousePosition.x, Input.mousePosition.y) - nullPosition;
+                Vector2 direction = (PointerId >= 0 && PointerId < Input.touches.Length) ? Input.touches[PointerId].position - new Vector2(Background.position.x, Background.position.y) : new Vector2(Input.mousePosition.x, Input.mousePosition.y) - new Vector2(Background.position.x, Background.position.y);
                 InputVector = (direction.magnitude > Background.sizeDelta.x / 2f) ? direction.normalized : direction / (Background.sizeDelta.x / 2f);
                 Handle.anchoredPosition = (InputVector * Background.sizeDelta.x / 2f) * HandleRange;
             }
