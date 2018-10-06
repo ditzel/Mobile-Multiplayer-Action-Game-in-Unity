@@ -53,7 +53,7 @@ public class Controller : MonoBehaviour {
         Player.Input.RunZ = runDirection.z;
         Player.Input.LookX = LookDirection.x;
         Player.Input.LookZ = LookDirection.z;
-        Player.Input.Jump = Button.Pressed;
+        Player.Input.Jump = Button.Pressed || Input.GetButton("Jump");
 
         CharacterPivot = Quaternion.AngleAxis(InputRotationX, Vector3.up) * CameraPivot;
     }
