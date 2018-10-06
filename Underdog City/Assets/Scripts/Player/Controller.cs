@@ -8,22 +8,19 @@ public class Controller : MonoBehaviour {
     protected Joystick Joystick;
     protected Button Button;
     protected TouchField TouchField;
+    protected Player Player;
+
+    //Parameters
+    protected const float RotationSpeed = 10;
 
     //Camera Controll
-    public Vector3 Pivot;
+    public Vector3 CameraPivot;
     public float CameraDistance;
     protected float InputRotationX;
     protected float InputRotationY;
 
-
-    [HideInInspector]
-    public Player Player;
-    protected const float RotationSpeed = 10;
-    protected float InputAngle;
-    protected float CameraAngle;
-    protected float CameraUp = 25f;
-    protected float CameraSmooth;
-    protected float CurrentCameraVelocity;
+    protected Vector3 CharacterPivot;
+    protected Vector3 LookDirection;
 
     // Use this for initialization
     void Start ()
@@ -32,42 +29,39 @@ public class Controller : MonoBehaviour {
         Button = FindObjectOfType<Button>();
         TouchField = FindObjectOfType<TouchField>();
         Player = FindObjectOfType<Player>();
+
+        TouchField.UseFixedUpdate = true;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate() {
 
         //input
-        InputRotationX = InputRotationX + TouchField.TouchDist.x * RotationSpeed * Time.fixedDeltaTime % 360f;
-        InputRotationY = Mathf.Clamp(InputRotationY - TouchField.TouchDist.y * RotationSpeed * Time.fixedDeltaTime, -88f, 88f);
+        InputRotationX = InputRotationX + TouchField.TouchDist.x * RotationSpeed * Time.deltaTime % 360f;
+        InputRotationY = Mathf.Clamp(InputRotationY - TouchField.TouchDist.y * RotationSpeed * Time.deltaTime, -88f, 88f);
 
         //left and forward
         var characterForward = Quaternion.AngleAxis(InputRotationX, Vector3.up) * Vector3.forward;
         var characterLeft = Quaternion.AngleAxis(InputRotationX + 90, Vector3.up) * Vector3.forward;
 
         //look and run direction
-        var runDirection = characterForward * (Input.GetAxis("Vertical") + Joystick.AxisNormalized.y) + characterLeft * (Input.GetAxis("Horizontal") + Joystick.AxisNormalized.x);
-        var lookDirection = Quaternion.AngleAxis(InputRotationY, characterLeft) * characterForward;
+        var runDirection = characterForward * (Input.GetAxisRaw("Vertical") + Joystick.AxisNormalized.y) + characterLeft * (Input.GetAxisRaw("Horizontal") + Joystick.AxisNormalized.x);
+        LookDirection = Quaternion.AngleAxis(InputRotationY, characterLeft) * characterForward;
 
         //set player values
         Player.Input.RunX = runDirection.x;
         Player.Input.RunZ = runDirection.z;
-        Player.Input.LookX = lookDirection.x;
-        Player.Input.LookZ = lookDirection.z;
+        Player.Input.LookX = LookDirection.x;
+        Player.Input.LookZ = LookDirection.z;
         Player.Input.Jump = Button.Pressed;
 
-        var characterPivot = Quaternion.AngleAxis(InputRotationX, Vector3.up) * Pivot;
-
-        StartCoroutine(setCamera(lookDirection, characterPivot));
+        CharacterPivot = Quaternion.AngleAxis(InputRotationX, Vector3.up) * CameraPivot;
     }
 
-    private IEnumerator setCamera(Vector3 lookDirection, Vector3 characterPivot)
+    private void LateUpdate()
     {
-        yield return new WaitForFixedUpdate();
-
         //set camera values
-        Camera.main.transform.position = (transform.position + characterPivot) - lookDirection * CameraDistance;
-        Camera.main.transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-
+        Camera.main.transform.position = (transform.position + CharacterPivot) - LookDirection * CameraDistance;
+        Camera.main.transform.rotation = Quaternion.LookRotation(LookDirection, Vector3.up);
     }
 }

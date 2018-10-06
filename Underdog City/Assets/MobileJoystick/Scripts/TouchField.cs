@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace DitzeGames.MobileJoystick
@@ -16,9 +17,22 @@ namespace DitzeGames.MobileJoystick
         protected int PointerId;
         [HideInInspector]
         public bool Pressed;
+        public bool UseFixedUpdate;
 
         // Update is called once per frame
         void Update()
+        {
+            if (!UseFixedUpdate)
+                DoUpdate();
+        }
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            if(UseFixedUpdate)
+                DoUpdate();
+        }
+
+        private void DoUpdate()
         {
             if (Pressed)
             {

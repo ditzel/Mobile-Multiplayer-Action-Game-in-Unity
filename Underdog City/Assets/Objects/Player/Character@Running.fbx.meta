@@ -179,6 +179,7 @@ ModelImporter:
     13700006: male_elegantsuit01Mesh
     13700008: shoes03Mesh
     13700010: short02Mesh
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -192,7 +193,11 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'mixamorig:LeftUpLeg' : position
+      error = 5.762323 mm\n\t'mixamorig:LeftFoot' : position error = 52.573933 mm\n\t'mixamorig:RightUpLeg'
+      : position error = 5.893567 mm\n\t'mixamorig:RightFoot' : position error = 52.557072
+      mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -211,7 +216,7 @@ ModelImporter:
       name: Running
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
