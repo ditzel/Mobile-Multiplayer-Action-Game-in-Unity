@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -40,6 +35,8 @@ public class Player : MonoBehaviour
         var localVelocity = Quaternion.Inverse(transform.rotation) * (Rigidbody.velocity / Speed);
         Animator.SetFloat("RunX", localVelocity.x);
         Animator.SetFloat("RunZ", localVelocity.z);
+
+
     }
 
     void FixedUpdate()

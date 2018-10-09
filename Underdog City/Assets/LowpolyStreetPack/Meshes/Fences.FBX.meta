@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 4b29ecf28e5fd4b4f86a961aca54fd1e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Fence_A_A
+    100002: Fence_A_B
+    100004: Fence_A_C
+    100006: Fence_A_Pillar_A
+    100008: Fence_A_Pillar_B
+    100010: Fence_A_Pillar_C
+    100012: Fence_B_A
+    100014: Fence_B_B
+    100016: Fence_B_C
+    100018: Fence_B_D
+    100020: Fence_B_Pillar_A
+    100022: Fence_B_Pillar_B
+    100024: Fence_B_Pillar_C
+    100026: Fence_B_Pillar_D
+    100028: Fence_C_A
+    100030: Fence_C_B
+    100032: Fence_D
+    100034: Fence_E
+    100036: //RootNode
+    100038: StreetRail_A_A
+    100040: StreetRail_A_B
+    400000: Fence_A_A
+    400002: Fence_A_B
+    400004: Fence_A_C
+    400006: Fence_A_Pillar_A
+    400008: Fence_A_Pillar_B
+    400010: Fence_A_Pillar_C
+    400012: Fence_B_A
+    400014: Fence_B_B
+    400016: Fence_B_C
+    400018: Fence_B_D
+    400020: Fence_B_Pillar_A
+    400022: Fence_B_Pillar_B
+    400024: Fence_B_Pillar_C
+    400026: Fence_B_Pillar_D
+    400028: Fence_C_A
+    400030: Fence_C_B
+    400032: Fence_D
+    400034: Fence_E
+    400036: //RootNode
+    400038: StreetRail_A_A
+    400040: StreetRail_A_B
+    2300000: Fence_A_A
+    2300002: Fence_A_B
+    2300004: Fence_A_C
+    2300006: Fence_A_Pillar_A
+    2300008: Fence_A_Pillar_B
+    2300010: Fence_A_Pillar_C
+    2300012: Fence_B_A
+    2300014: Fence_B_B
+    2300016: Fence_B_C
+    2300018: Fence_B_D
+    2300020: Fence_B_Pillar_A
+    2300022: Fence_B_Pillar_B
+    2300024: Fence_B_Pillar_C
+    2300026: Fence_B_Pillar_D
+    2300028: Fence_C_A
+    2300030: Fence_C_B
+    2300032: Fence_D
+    2300034: Fence_E
+    2300036: StreetRail_A_A
+    2300038: StreetRail_A_B
+    3300000: Fence_A_A
+    3300002: Fence_A_B
+    3300004: Fence_A_C
+    3300006: Fence_A_Pillar_A
+    3300008: Fence_A_Pillar_B
+    3300010: Fence_A_Pillar_C
+    3300012: Fence_B_A
+    3300014: Fence_B_B
+    3300016: Fence_B_C
+    3300018: Fence_B_D
+    3300020: Fence_B_Pillar_A
+    3300022: Fence_B_Pillar_B
+    3300024: Fence_B_Pillar_C
+    3300026: Fence_B_Pillar_D
+    3300028: Fence_C_A
+    3300030: Fence_C_B
+    3300032: Fence_D
+    3300034: Fence_E
+    3300036: StreetRail_A_A
+    3300038: StreetRail_A_B
+    4300000: Fence_B_Pillar_A
+    4300002: Fence_B_A
+    4300004: Fence_A_Pillar_C
+    4300006: Fence_A_A
+    4300008: Fence_B_Pillar_D
+    4300010: Fence_B_B
+    4300012: Fence_B_C
+    4300014: Fence_B_D
+    4300016: Fence_C_B
+    4300018: Fence_B_Pillar_C
+    4300020: Fence_B_Pillar_B
+    4300022: Fence_A_Pillar_A
+    4300024: Fence_A_Pillar_B
+    4300026: Fence_A_C
+    4300028: Fence_A_B
+    4300030: Fence_C_A
+    4300032: StreetRail_A_A
+    4300034: StreetRail_A_B
+    4300036: Fence_D
+    4300038: Fence_E
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

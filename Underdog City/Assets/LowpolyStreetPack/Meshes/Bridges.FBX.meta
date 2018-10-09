@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 743b5a36add64654a83f60be2beee9f1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bridge_Damage
+    100002: Bridge_Damage_A
+    100004: Bridge_Damage_B
+    100006: Bridge_Double_Curved
+    100008: Bridge_Double_Straight
+    100010: Bridge_Simple_Curved
+    100012: Bridge_Simple_Straight
+    100014: Bridge_ToStreet_Double
+    100016: Bridge_ToStreet_Simple
+    100018: //RootNode
+    100020: BridgeSlope_Double
+    100022: BridgeSlope_Simple
+    100024: Bridge_Double_Straight_A
+    100026: Bridge_Simple_Straight_A
+    400000: Bridge_Damage
+    400002: Bridge_Damage_A
+    400004: Bridge_Damage_B
+    400006: Bridge_Double_Curved
+    400008: Bridge_Double_Straight
+    400010: Bridge_Simple_Curved
+    400012: Bridge_Simple_Straight
+    400014: Bridge_ToStreet_Double
+    400016: Bridge_ToStreet_Simple
+    400018: //RootNode
+    400020: BridgeSlope_Double
+    400022: BridgeSlope_Simple
+    400024: Bridge_Double_Straight_A
+    400026: Bridge_Simple_Straight_A
+    2300000: Bridge_Damage_A
+    2300002: Bridge_Damage_B
+    2300004: Bridge_Double_Curved
+    2300006: Bridge_Double_Straight
+    2300008: Bridge_Simple_Curved
+    2300010: Bridge_Simple_Straight
+    2300012: Bridge_ToStreet_Double
+    2300014: Bridge_ToStreet_Simple
+    2300016: BridgeSlope_Double
+    2300018: BridgeSlope_Simple
+    2300020: Bridge_Double_Straight_A
+    2300022: Bridge_Simple_Straight_A
+    3300000: Bridge_Damage_A
+    3300002: Bridge_Damage_B
+    3300004: Bridge_Double_Curved
+    3300006: Bridge_Double_Straight
+    3300008: Bridge_Simple_Curved
+    3300010: Bridge_Simple_Straight
+    3300012: Bridge_ToStreet_Double
+    3300014: Bridge_ToStreet_Simple
+    3300016: BridgeSlope_Double
+    3300018: BridgeSlope_Simple
+    3300020: Bridge_Double_Straight_A
+    3300022: Bridge_Simple_Straight_A
+    4300000: Bridge_Simple_Straight
+    4300002: BridgeSlope_Simple
+    4300004: BridgeSlope_Double
+    4300006: Bridge_Double_Straight
+    4300008: Bridge_Double_Curved
+    4300010: Bridge_Simple_Curved
+    4300012: Bridge_ToStreet_Simple
+    4300014: Bridge_ToStreet_Double
+    4300016: Bridge_Damage_A
+    4300018: Bridge_Damage_B
+    4300020: Bridge_Double_Straight_A
+    4300022: Bridge_Simple_Straight_A
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

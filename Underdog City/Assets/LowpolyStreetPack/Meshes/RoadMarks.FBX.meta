@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: 33c8305a75ab5af45a870e900a34b596
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: RoadM_BusStop
+    100002: RoadM_F
+    100004: RoadM_FR
+    100006: RoadM_Intersection
+    100008: RoadM_LFR
+    100010: RoadM_Line
+    100012: RoadM_LR
+    100014: RoadM_PArking_A
+    100016: RoadM_PArking_AB
+    100018: RoadM_PArking_C
+    100020: RoadM_PArking_D
+    100022: RoadM_R
+    100024: RoadM_Stop
+    100026: RoadM_Triangle_A
+    100028: RoadM_Triangle_B
+    100030: RoadM_Triangle_C
+    100032: //RootNode
+    400000: RoadM_BusStop
+    400002: RoadM_F
+    400004: RoadM_FR
+    400006: RoadM_Intersection
+    400008: RoadM_LFR
+    400010: RoadM_Line
+    400012: RoadM_LR
+    400014: RoadM_PArking_A
+    400016: RoadM_PArking_AB
+    400018: RoadM_PArking_C
+    400020: RoadM_PArking_D
+    400022: RoadM_R
+    400024: RoadM_Stop
+    400026: RoadM_Triangle_A
+    400028: RoadM_Triangle_B
+    400030: RoadM_Triangle_C
+    400032: //RootNode
+    2300000: RoadM_BusStop
+    2300002: RoadM_F
+    2300004: RoadM_FR
+    2300006: RoadM_Intersection
+    2300008: RoadM_LFR
+    2300010: RoadM_Line
+    2300012: RoadM_LR
+    2300014: RoadM_PArking_A
+    2300016: RoadM_PArking_AB
+    2300018: RoadM_PArking_C
+    2300020: RoadM_PArking_D
+    2300022: RoadM_R
+    2300024: RoadM_Stop
+    2300026: RoadM_Triangle_A
+    2300028: RoadM_Triangle_B
+    2300030: RoadM_Triangle_C
+    3300000: RoadM_BusStop
+    3300002: RoadM_F
+    3300004: RoadM_FR
+    3300006: RoadM_Intersection
+    3300008: RoadM_LFR
+    3300010: RoadM_Line
+    3300012: RoadM_LR
+    3300014: RoadM_PArking_A
+    3300016: RoadM_PArking_AB
+    3300018: RoadM_PArking_C
+    3300020: RoadM_PArking_D
+    3300022: RoadM_R
+    3300024: RoadM_Stop
+    3300026: RoadM_Triangle_A
+    3300028: RoadM_Triangle_B
+    3300030: RoadM_Triangle_C
+    4300000: RoadM_BusStop
+    4300002: RoadM_Triangle_C
+    4300004: RoadM_F
+    4300006: RoadM_Intersection
+    4300008: RoadM_Triangle_B
+    4300010: RoadM_LR
+    4300012: RoadM_R
+    4300014: RoadM_LFR
+    4300016: RoadM_FR
+    4300018: RoadM_Stop
+    4300020: RoadM_Triangle_A
+    4300022: RoadM_PArking_A
+    4300024: RoadM_Line
+    4300026: RoadM_PArking_AB
+    4300028: RoadM_PArking_C
+    4300030: RoadM_PArking_D
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

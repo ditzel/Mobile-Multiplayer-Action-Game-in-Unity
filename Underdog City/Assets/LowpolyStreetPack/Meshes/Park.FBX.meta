@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: 63c115d4cb97ebb429c815dffc7a05d7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Park_Center
+    100004: Park_Corner_A
+    100006: Park_Corner_B
+    100008: Park_Sidewalk_Corner_A
+    100010: Park_Sidewalk_Corner_B
+    100012: Park_Sidewalk_Double
+    100014: Park_Sidewalk_End
+    100016: Park_Sidewalk_Siple
+    100018: Park_Streight
+    400000: //RootNode
+    400002: Park_Center
+    400004: Park_Corner_A
+    400006: Park_Corner_B
+    400008: Park_Sidewalk_Corner_A
+    400010: Park_Sidewalk_Corner_B
+    400012: Park_Sidewalk_Double
+    400014: Park_Sidewalk_End
+    400016: Park_Sidewalk_Siple
+    400018: Park_Streight
+    2300000: Park_Center
+    2300002: Park_Corner_A
+    2300004: Park_Corner_B
+    2300006: Park_Sidewalk_Corner_A
+    2300008: Park_Sidewalk_Corner_B
+    2300010: Park_Sidewalk_Double
+    2300012: Park_Sidewalk_End
+    2300014: Park_Sidewalk_Siple
+    2300016: Park_Streight
+    3300000: Park_Center
+    3300002: Park_Corner_A
+    3300004: Park_Corner_B
+    3300006: Park_Sidewalk_Corner_A
+    3300008: Park_Sidewalk_Corner_B
+    3300010: Park_Sidewalk_Double
+    3300012: Park_Sidewalk_End
+    3300014: Park_Sidewalk_Siple
+    3300016: Park_Streight
+    4300000: Park_Sidewalk_Double
+    4300002: Park_Sidewalk_Siple
+    4300004: Park_Center
+    4300006: Park_Streight
+    4300008: Park_Corner_A
+    4300010: Park_Corner_B
+    4300012: Park_Sidewalk_Corner_A
+    4300014: Park_Sidewalk_Corner_B
+    4300016: Park_Sidewalk_End
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
