@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Menu.unity
+    guid: 24b59f8562eb5d04f8bed276900b1831
   - enabled: 1
-    path: Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity
-    guid: bff77b01b50254edbb6edeeaba5ae8b3
+    path: Assets/Scenes/Network.unity
+    guid: a4dfa91926b524e48a996beba41a65b4
   m_configObjects: {}

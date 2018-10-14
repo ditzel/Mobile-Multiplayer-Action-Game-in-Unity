@@ -32,7 +32,7 @@ namespace UnderdogCity
             Joystick = FindObjectOfType<Joystick>();
             Button = FindObjectOfType<Button>();
             TouchField = FindObjectOfType<TouchField>();
-            Player = FindObjectOfType<Player>();
+            Player = GetComponent<Player>();
 
             TouchField.UseFixedUpdate = true;
         }

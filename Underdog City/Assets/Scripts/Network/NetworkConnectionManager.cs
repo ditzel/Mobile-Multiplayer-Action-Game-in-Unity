@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-public class NetworkConnectionManager : MonoBehaviourPunCallbacks
+namespace UnderdogCity
+{
+    public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
 
     public Button BtnConnectMaster;
@@ -17,6 +19,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(this);
         TriesToConnectToMaster = false;
         TriesToConnectToRoom   = false;
     }
@@ -24,8 +27,11 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !TriesToConnectToMaster);
-        BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !TriesToConnectToMaster && !TriesToConnectToRoom);
+            if (BtnConnectMaster != null)
+                BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !TriesToConnectToMaster);
+            if (BtnConnectRoom != null)
+                BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !TriesToConnectToMaster && !TriesToConnectToRoom);
+
     }
 
     public void OnClickConnectToMaster()
@@ -33,7 +39,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         //Settings (all optional and only for tutorial purpose)
         PhotonNetwork.OfflineMode = false;           //true would "fake" an online connection
         PhotonNetwork.NickName = "PlayerName";       //to set a player name
-        PhotonNetwork.AutomaticallySyncScene = true; //to call PhotonNetwork.LoadLevel()
+        //PhotonNetwork.AutomaticallySyncScene = true; //to call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1";            //only people with the same game version can play together
 
         TriesToConnectToMaster = true;
@@ -90,5 +96,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         TriesToConnectToRoom = false;
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players In Room: " + PhotonNetwork.CurrentRoom.PlayerCount + " | RoomName: " + PhotonNetwork.CurrentRoom.Name);
         SceneManager.LoadScene("Network");
+        }
     }
 }

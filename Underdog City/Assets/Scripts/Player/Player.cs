@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace UnderdogCity
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviourPun, IPunObservable
     {
         [HideInInspector]
         public InputStr Input;
@@ -28,6 +29,10 @@ namespace UnderdogCity
         {
             Rigidbody = GetComponent<Rigidbody>();
             Animator = GetComponentInChildren<Animator>();
+
+            //destroy the controller if the player is not controlled by me
+            if (!photonView.IsMine && GetComponent<Controller>() != null)
+                Destroy(GetComponent<Controller>());
         }
 
         private void Update()
@@ -69,6 +74,38 @@ namespace UnderdogCity
         {
             Animator.transform.localPosition = Vector3.zero;
             Animator.transform.localRotation = Quaternion.identity;
+        }
+
+        public static void RefreshInstance(ref Player player, Player Prefab)
+        {
+            var position = Vector3.zero;
+            var rotation = Quaternion.identity;
+            if (player != null)
+            {
+                position = player.transform.position;
+                rotation = player.transform.rotation;
+                PhotonNetwork.Destroy(player.gameObject);
+            }
+
+            player = PhotonNetwork.Instantiate(Prefab.gameObject.name, position, rotation).GetComponent<Player>();
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(Input.RunX);
+                stream.SendNext(Input.RunZ);
+                stream.SendNext(Input.LookX);
+                stream.SendNext(Input.LookZ);
+            }
+            else
+            {
+                Input.RunX = (float)stream.ReceiveNext();
+                Input.RunZ = (float)stream.ReceiveNext();
+                Input.LookX = (float)stream.ReceiveNext();
+                Input.LookZ = (float)stream.ReceiveNext();
+            }
         }
     }
 }
