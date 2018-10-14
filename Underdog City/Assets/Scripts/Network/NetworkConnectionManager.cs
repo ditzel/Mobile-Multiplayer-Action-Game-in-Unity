@@ -13,8 +13,8 @@ namespace UnderdogCity
     public Button BtnConnectMaster;
     public Button BtnConnectRoom;
 
-    public bool TriesToConnectToMaster;
-    public bool TriesToConnectToRoom;
+    protected bool TriesToConnectToMaster;
+    protected bool TriesToConnectToRoom;
 
     // Use this for initialization
     void Start()
