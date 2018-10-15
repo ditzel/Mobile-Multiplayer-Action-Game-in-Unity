@@ -27,18 +27,13 @@ namespace UnderdogCity
         // Use this for initialization
         void Start()
         {
-            Player.RefreshInstance(ref LocalPlayer, PlayerPrefab);
+            LocalPlayer = PhotonNetwork.Instantiate(PlayerPrefab.gameObject.name, Vector3.zero, Quaternion.identity).GetComponent<Player>();
         }
 
         // Update is called once per frame
         void Update()
         {
 
-        }
-
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-        {
-            Player.RefreshInstance(ref LocalPlayer, PlayerPrefab);
         }
     }
 }
