@@ -1,5 +1,6 @@
 ﻿using DitzeGames.MobileJoystick;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnderdogCity
@@ -10,7 +11,8 @@ namespace UnderdogCity
 
         //Input
         protected Joystick Joystick;
-        protected Button Button;
+        protected Button JumpButton;
+        protected Button ShootButton;
         protected TouchField TouchField;
         protected Player Player;
 
@@ -30,7 +32,9 @@ namespace UnderdogCity
         void Start()
         {
             Joystick = FindObjectOfType<Joystick>();
-            Button = FindObjectOfType<Button>();
+            var buttons = new List<Button>(FindObjectsOfType<Button>());
+            JumpButton = buttons.Find(b => b.gameObject.name == "btnJump");
+            ShootButton = buttons.Find(b => b.gameObject.name == "btnShoot");
             TouchField = FindObjectOfType<TouchField>();
             Player = GetComponent<Player>();
 
@@ -58,7 +62,20 @@ namespace UnderdogCity
             Player.Input.RunZ = runDirection.z;
             Player.Input.LookX = LookDirection.x;
             Player.Input.LookZ = LookDirection.z;
-            Player.Input.Jump = Button.Pressed || Input.GetButton("Jump");
+            Player.Input.Jump = JumpButton.Pressed || Input.GetButton("Jump");
+
+            if (ShootButton.Pressed)
+            {
+                ShootButton.Pressed = false;
+                var ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
+                RaycastHit hitInfo;
+                if(Physics.Raycast(ray, out hitInfo))
+                {
+                    var player = hitInfo.collider.GetComponent<Player>();
+                    if (player != null)
+                        player.OnHit(ray.direction);
+                }
+            }
 
             CharacterPivot = Quaternion.AngleAxis(InputRotationX, Vector3.up) * CameraPivot;
         }

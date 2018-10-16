@@ -22,6 +22,8 @@ namespace UnderdogCity
         protected Rigidbody Rigidbody;
         protected Animator Animator;
         protected Quaternion LookRotation;
+        protected Collider MainCollider;
+        protected Collider[] AllCollider;
 
         protected bool Grounded;
 
@@ -29,10 +31,17 @@ namespace UnderdogCity
         {
             Rigidbody = GetComponent<Rigidbody>();
             Animator = GetComponentInChildren<Animator>();
+            MainCollider = GetComponent<Collider>();
+            AllCollider = GetComponentsInChildren<Collider>();
 
             //destroy the controller if the player is not controlled by me
             if (!photonView.IsMine && GetComponent<Controller>() != null)
                 Destroy(GetComponent<Controller>());
+        }
+
+        private void Start()
+        {
+            SetRagdoll(false);
         }
 
         private void Update()
@@ -76,6 +85,33 @@ namespace UnderdogCity
             Animator.transform.localRotation = Quaternion.identity;
         }
 
+        public void OnHit(Vector3 direction)
+        {
+            //Remote Procedure call
+            photonView.RPC("OnHitRpc", RpcTarget.All, direction);
+        }
+
+        [PunRPC]
+        void OnHitRpc(Vector3 direction, PhotonMessageInfo info)
+        {
+            SetRagdoll(true);
+            if(GetComponent<Controller>() != null)
+                Destroy(GetComponent<Controller>());
+
+            //Properties
+            PhotonNetwork.LocalPlayer.CustomProperties.Add("state", "dead");
+            //access by: PhotonNetwork.PlayerListOthers[0].CustomProperties["state"]
+        }
+
+        public void SetRagdoll(bool on)
+        {
+            foreach (var col in AllCollider)
+                col.enabled = on;
+            MainCollider.enabled = !on;
+            Rigidbody.useGravity = !on;
+            Animator.enabled = !on;
+        }
+
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
@@ -84,6 +120,9 @@ namespace UnderdogCity
                 stream.SendNext(Input.RunZ);
                 stream.SendNext(Input.LookX);
                 stream.SendNext(Input.LookZ);
+                stream.SendNext(Rigidbody.position);
+                stream.SendNext(Rigidbody.rotation);
+                stream.SendNext(Rigidbody.velocity);
             }
             else
             {
@@ -91,6 +130,9 @@ namespace UnderdogCity
                 Input.RunZ = (float)stream.ReceiveNext();
                 Input.LookX = (float)stream.ReceiveNext();
                 Input.LookZ = (float)stream.ReceiveNext();
+                Rigidbody.position = (Vector3)stream.ReceiveNext();
+                Rigidbody.rotation = (Quaternion)stream.ReceiveNext();
+                Rigidbody.velocity = (Vector3)stream.ReceiveNext();
             }
         }
     }

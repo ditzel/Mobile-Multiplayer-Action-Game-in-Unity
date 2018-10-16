@@ -3,6 +3,7 @@ using System.Collections;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 namespace UnderdogCity
 {
@@ -34,6 +35,12 @@ namespace UnderdogCity
         void Update()
         {
 
+        }
+
+        public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player target, ExitGames.Client.Photon.Hashtable changedProps)
+        {
+            foreach(var change in changedProps)
+                Debug.Log("Property " + change.Key + " of player " + target.UserId + " changed to " + change.Value);
         }
     }
 }
