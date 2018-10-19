@@ -46,6 +46,9 @@ namespace UnderdogCity
 
         private void Update()
         {
+            if (Rigidbody == null)
+                return;
+
             Animator.SetBool("Grounded", Grounded);
 
             var localVelocity = Quaternion.Inverse(transform.rotation) * (Rigidbody.velocity / Speed);
@@ -57,6 +60,8 @@ namespace UnderdogCity
 
         void FixedUpdate()
         {
+            if (Rigidbody == null)
+                return;
 
             var inputRun = Vector3.ClampMagnitude(new Vector3(Input.RunX, 0, Input.RunZ), 1);
             var inputLook = Vector3.ClampMagnitude(new Vector3(Input.LookX, 0, Input.LookZ), 1);
@@ -107,13 +112,23 @@ namespace UnderdogCity
         {
             foreach (var col in AllCollider)
                 col.enabled = on;
-            MainCollider.enabled = !on;
-            Rigidbody.useGravity = !on;
+            if (on)
+            {
+                Destroy(MainCollider);
+                Destroy(Rigidbody);
+            }
+            else
+            {
+                MainCollider.enabled = true;
+            }
             Animator.enabled = !on;
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
+            if (Rigidbody == null)
+                return;
+
             if (stream.IsWriting)
             {
                 stream.SendNext(Input.RunX);
