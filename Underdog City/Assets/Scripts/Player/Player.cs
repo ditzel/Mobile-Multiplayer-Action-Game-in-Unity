@@ -20,19 +20,19 @@ namespace UnderdogCity
         public const float JumpForce = 5f;
 
         protected Rigidbody Rigidbody;
-        protected Animator Animator;
         protected Quaternion LookRotation;
         protected Collider MainCollider;
-        protected Collider[] AllCollider;
+        protected Animator CharacterAnimator;
+        protected GameObject CharacterRagdoll;
 
-        protected bool Grounded;
+        protected bool Grounded = true;
 
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
-            Animator = GetComponentInChildren<Animator>();
+            CharacterAnimator = GetComponentInChildren<Animator>();
+            CharacterRagdoll = transform.Find("CharacterRagdoll").gameObject;
             MainCollider = GetComponent<Collider>();
-            AllCollider = GetComponentsInChildren<Collider>();
 
             //destroy the controller if the player is not controlled by me
             if (!photonView.IsMine && GetComponent<Controller>() != null)
@@ -49,11 +49,11 @@ namespace UnderdogCity
             if (Rigidbody == null)
                 return;
 
-            Animator.SetBool("Grounded", Grounded);
+            CharacterAnimator.SetBool("Grounded", Grounded);
 
             var localVelocity = Quaternion.Inverse(transform.rotation) * (Rigidbody.velocity / Speed);
-            Animator.SetFloat("RunX", localVelocity.x);
-            Animator.SetFloat("RunZ", localVelocity.z);
+            CharacterAnimator.SetFloat("RunX", localVelocity.x);
+            CharacterAnimator.SetFloat("RunZ", localVelocity.z);
 
 
         }
@@ -73,7 +73,9 @@ namespace UnderdogCity
                 LookRotation = Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, inputLook, Vector3.up), Vector3.up);
 
             transform.rotation = LookRotation;
-            Grounded = Physics.OverlapSphere(transform.position, 0.3f, 1).Length > 1;
+
+            if(photonView.IsMine)
+                Grounded = Physics.OverlapSphere(transform.position, 0.3f, 1).Length > 1;
 
             if (Input.Jump)
             {
@@ -86,8 +88,8 @@ namespace UnderdogCity
 
         private void LateUpdate()
         {
-            Animator.transform.localPosition = Vector3.zero;
-            Animator.transform.localRotation = Quaternion.identity;
+            CharacterAnimator.transform.localPosition = Vector3.zero;
+            CharacterAnimator.transform.localRotation = Quaternion.identity;
         }
 
         public void OnHit(Vector3 direction)
@@ -110,18 +112,13 @@ namespace UnderdogCity
 
         public void SetRagdoll(bool on)
         {
-            foreach (var col in AllCollider)
-                col.enabled = on;
+            CharacterAnimator.gameObject.SetActive(!on);
+            CharacterRagdoll.gameObject.SetActive(on);
             if (on)
             {
                 Destroy(MainCollider);
                 Destroy(Rigidbody);
             }
-            else
-            {
-                MainCollider.enabled = true;
-            }
-            Animator.enabled = !on;
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -138,6 +135,7 @@ namespace UnderdogCity
                 stream.SendNext(Rigidbody.position);
                 stream.SendNext(Rigidbody.rotation);
                 stream.SendNext(Rigidbody.velocity);
+                stream.SendNext(Grounded);
             }
             else
             {
@@ -148,6 +146,10 @@ namespace UnderdogCity
                 Rigidbody.position = (Vector3)stream.ReceiveNext();
                 Rigidbody.rotation = (Quaternion)stream.ReceiveNext();
                 Rigidbody.velocity = (Vector3)stream.ReceiveNext();
+                Grounded = (bool)stream.ReceiveNext();
+
+                float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.timestamp));
+                Rigidbody.position += Rigidbody.velocity * lag;
             }
         }
     }

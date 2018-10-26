@@ -818,6 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932862059}
   - component: {fileID: 1932862060}
+  - component: {fileID: 1932862061}
   m_Layer: 0
   m_Name: NetworkConnectionManager
   m_TagString: Untagged
@@ -851,3 +852,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BtnConnectMaster: {fileID: 128728931}
   BtnConnectRoom: {fileID: 1633749244}
+--- !u!114 &1932862061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932862058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5867a53c8db0e6745818285bb6b6e1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 0
+    y: 100
+    width: 120
+    height: 100
+  WindowId: 101
+  Visible: 1
