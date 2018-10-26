@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnderdogCity
 {
-    public class Player : MonoBehaviourPun, IPunObservable
+    public class Player : MonoBehaviourPun
     {
         [HideInInspector]
         public InputStr Input;
@@ -33,10 +33,6 @@ namespace UnderdogCity
             CharacterAnimator = GetComponentInChildren<Animator>();
             CharacterRagdoll = transform.Find("CharacterRagdoll").gameObject;
             MainCollider = GetComponent<Collider>();
-
-            //destroy the controller if the player is not controlled by me
-            if (!photonView.IsMine && GetComponent<Controller>() != null)
-                Destroy(GetComponent<Controller>());
         }
 
         private void Start()
@@ -73,9 +69,7 @@ namespace UnderdogCity
                 LookRotation = Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, inputLook, Vector3.up), Vector3.up);
 
             transform.rotation = LookRotation;
-
-            if(photonView.IsMine)
-                Grounded = Physics.OverlapSphere(transform.position, 0.3f, 1).Length > 1;
+            Grounded = Physics.OverlapSphere(transform.position, 0.3f, 1).Length > 1;
 
             if (Input.Jump)
             {
@@ -118,38 +112,6 @@ namespace UnderdogCity
             {
                 Destroy(MainCollider);
                 Destroy(Rigidbody);
-            }
-        }
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (Rigidbody == null)
-                return;
-
-            if (stream.IsWriting)
-            {
-                stream.SendNext(Input.RunX);
-                stream.SendNext(Input.RunZ);
-                stream.SendNext(Input.LookX);
-                stream.SendNext(Input.LookZ);
-                stream.SendNext(Rigidbody.position);
-                stream.SendNext(Rigidbody.rotation);
-                stream.SendNext(Rigidbody.velocity);
-                stream.SendNext(Grounded);
-            }
-            else
-            {
-                Input.RunX = (float)stream.ReceiveNext();
-                Input.RunZ = (float)stream.ReceiveNext();
-                Input.LookX = (float)stream.ReceiveNext();
-                Input.LookZ = (float)stream.ReceiveNext();
-                Rigidbody.position = (Vector3)stream.ReceiveNext();
-                Rigidbody.rotation = (Quaternion)stream.ReceiveNext();
-                Rigidbody.velocity = (Vector3)stream.ReceiveNext();
-                Grounded = (bool)stream.ReceiveNext();
-
-                float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.timestamp));
-                Rigidbody.position += Rigidbody.velocity * lag;
             }
         }
     }
