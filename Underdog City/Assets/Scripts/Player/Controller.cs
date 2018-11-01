@@ -13,6 +13,7 @@ namespace UnderdogCity
         protected Joystick Joystick;
         protected Button JumpButton;
         protected Button ShootButton;
+        protected Button CarButton;
         protected TouchField TouchField;
         protected Player Player;
 
@@ -35,6 +36,7 @@ namespace UnderdogCity
             var buttons = new List<Button>(FindObjectsOfType<Button>());
             JumpButton = buttons.Find(b => b.gameObject.name == "btnJump");
             ShootButton = buttons.Find(b => b.gameObject.name == "btnShoot");
+            CarButton = buttons.Find(b => b.gameObject.name == "btnCar");
             TouchField = FindObjectOfType<TouchField>();
             Player = GetComponent<Player>();
 
@@ -78,6 +80,12 @@ namespace UnderdogCity
             }
 
             CharacterPivot = Quaternion.AngleAxis(InputRotationX, Vector3.up) * CameraPivot;
+
+            //btnVisibility
+            CarButton.gameObject.SetActive(Player.NearestCar != null);
+
+            if (CarButton.Pressed)
+                Player.EnterCar();
         }
 
         private void LateUpdate()

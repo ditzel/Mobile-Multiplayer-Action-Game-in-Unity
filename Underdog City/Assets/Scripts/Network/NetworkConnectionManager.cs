@@ -96,8 +96,10 @@ namespace UnderdogCity
             TriesToConnectToRoom = false;
 
             Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players In Room: " + PhotonNetwork.CurrentRoom.PlayerCount + " | RoomName: " + PhotonNetwork.CurrentRoom.Name);
-            if(PhotonNetwork.IsMasterClient && SceneManager.GetActiveScene().name != "Network")
-                PhotonNetwork.LoadLevel("Network");
+            //if(PhotonNetwork.IsMasterClient && SceneManager.GetActiveScene().name != "Network")
+            //    PhotonNetwork.LoadLevel("Network");
+            if(PhotonNetwork.IsMasterClient && SceneManager.GetActiveScene().name != "Main")
+                PhotonNetwork.LoadLevel("Main");
         }
     }
 }
