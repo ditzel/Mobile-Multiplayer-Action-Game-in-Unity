@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnderdogCity
 {
-    public class Car : MonoBehaviour {
+    public class CarAnimation : MonoBehaviour {
 
         [HideInInspector]
         public Animator Animator;
@@ -14,12 +14,15 @@ namespace UnderdogCity
         public GameObject AnimEnterPosition;
         [HideInInspector]
         public GameObject AnimDrivePosition;
+        [HideInInspector]
+        public CarPhysics CarPhysics;
 
         // Use this for initialization
         void Awake () {
-            Animator = GetComponent<Animator>();
-            AnimEnterPosition = transform.Find("AnimEnterPosition").gameObject;
-            AnimDrivePosition = transform.Find("AnimDrivePosition").gameObject;
+            Animator = GetComponentInChildren<Animator>();
+            AnimEnterPosition = transform.Find("CarMesh").Find("AnimEnterPosition").gameObject;
+            AnimDrivePosition = transform.Find("CarMesh").Find("AnimDrivePosition").gameObject;
+            CarPhysics = GetComponent<CarPhysics>();
         }
 
         public enum CarState

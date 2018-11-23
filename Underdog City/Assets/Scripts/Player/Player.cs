@@ -30,7 +30,7 @@ namespace UnderdogCity
         protected Animator CharacterAnimator;
         protected GameObject CharacterRagdoll;
 
-        public Car NearestCar { get; protected set; }
+        public CarAnimation NearestCar { get; protected set; }
 
         protected bool Grounded = true;
 
@@ -128,19 +128,19 @@ namespace UnderdogCity
         public void EnterCar()
         {
             switch (NearestCar.State) {
-                case Car.CarState.FREE:
+                case CarAnimation.CarState.FREE:
                     if (NearestCar != null && State == PlayerState.NORMAL)
                     {
                         State = PlayerState.TRANSITION;
-                        NearestCar.State = Car.CarState.OCCUPIED;
+                        NearestCar.State = CarAnimation.CarState.OCCUPIED;
                         StartCoroutine(EnterCarAnimation());
                     }
                     break;
-                case Car.CarState.OCCUPIED:
+                case CarAnimation.CarState.OCCUPIED:
                     if (State == PlayerState.IN_CAR)
                     {
                         State = PlayerState.TRANSITION;
-                        NearestCar.State = Car.CarState.FREE;
+                        NearestCar.State = CarAnimation.CarState.FREE;
                         StartCoroutine(ExitCarAnimation());
                     }
                     break;
@@ -150,7 +150,6 @@ namespace UnderdogCity
         public IEnumerator EnterCarAnimation()
         {
             //get in
-            Time.timeScale = 0.2f;
             var time = 0f;
             CharacterAnimator.SetBool("InCar", true);
             CharacterAnimator.SetTrigger("EnterCar");
@@ -202,13 +201,13 @@ namespace UnderdogCity
 
         public void OnTriggerEnter(Collider other)
         {
-            if (NearestCar == null && other.GetComponent<Car>() != null)
-                NearestCar = other.GetComponent<Car>();
+            if (NearestCar == null && other.GetComponent<CarAnimation>() != null)
+                NearestCar = other.GetComponent<CarAnimation>();
         }
 
         public void OnTriggerExit(Collider other)
         {
-            if (other.GetComponent<Car>() == NearestCar)
+            if (other.GetComponent<CarAnimation>() == NearestCar)
                 NearestCar = null;
         }
 

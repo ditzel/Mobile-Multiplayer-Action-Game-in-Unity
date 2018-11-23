@@ -36,15 +36,17 @@ namespace UnderdogCity
 
         public void OnClickConnectToMaster()
         {
+            TriesToConnectToMaster = true;
+
             //Settings (all optional and only for tutorial purpose)
-            PhotonNetwork.OfflineMode = false;           //true would "fake" an online connection
+            PhotonNetwork.OfflineMode = true;           //true would "fake" an online connection
             PhotonNetwork.NickName = "PlayerName";       //to set a player name
             PhotonNetwork.AutomaticallySyncScene = true; //to call PhotonNetwork.LoadLevel()
             PhotonNetwork.GameVersion = "v1";            //only people with the same game version can play together
 
-            TriesToConnectToMaster = true;
             //PhotonNetwork.ConnectToMaster(ip,port,appid); //manual connection
-            PhotonNetwork.ConnectUsingSettings();           //automatic connection based on the config file in Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
+            if(!PhotonNetwork.OfflineMode)
+                PhotonNetwork.ConnectUsingSettings();           //automatic connection based on the config file in Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
 
         }
 
