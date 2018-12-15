@@ -16,6 +16,11 @@ namespace UnderdogCity
         public GameObject AnimDrivePosition;
         [HideInInspector]
         public CarPhysics CarPhysics;
+        [HideInInspector]
+        public AudioSource AudioSource;
+        public AudioClip OpenClip;
+        public AudioClip CloseClip;
+        protected Rigidbody Rigidbody;
 
         // Use this for initialization
         void Awake () {
@@ -23,7 +28,15 @@ namespace UnderdogCity
             AnimEnterPosition = transform.Find("CarMesh").Find("AnimEnterPosition").gameObject;
             AnimDrivePosition = transform.Find("CarMesh").Find("AnimDrivePosition").gameObject;
             CarPhysics = GetComponent<CarPhysics>();
+            AudioSource = GetComponent<AudioSource>();
+            Rigidbody = GetComponent<Rigidbody>();
         }
+
+        void Update()
+        {
+            AudioSource.pitch = 0.8f + Rigidbody.velocity.magnitude / 20f;
+        }
+
 
         public enum CarState
         {

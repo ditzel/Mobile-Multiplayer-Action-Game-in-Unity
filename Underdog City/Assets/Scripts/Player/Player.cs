@@ -161,15 +161,25 @@ namespace UnderdogCity
                 NearestCar.Animator.SetBool("Open", 0.3f < time && time < 1f);
                 transform.position = Vector3.Lerp(NearestCar.AnimEnterPosition.transform.position, NearestCar.AnimDrivePosition.transform.position, time / 1.3f);
                 transform.rotation = Quaternion.Lerp(NearestCar.AnimEnterPosition.transform.rotation, NearestCar.AnimDrivePosition.transform.rotation, time / 1.3f);
+
+                if (time < 0.2f && time + Time.fixedDeltaTime >= 0.2f)
+                    NearestCar.AudioSource.PlayOneShot(NearestCar.OpenClip);
+                if (time < 1.2f && time + Time.fixedDeltaTime >= 1.2f)
+                    NearestCar.AudioSource.PlayOneShot(NearestCar.CloseClip);
+
                 time += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
             }
+
+            NearestCar.AudioSource.Play();
 
             State = PlayerState.IN_CAR;
         }
 
         public IEnumerator ExitCarAnimation()
         {
+            NearestCar.AudioSource.Stop();
+
             //get out
             var time = 0f;
             CharacterAnimator.SetBool("InCar", false);
@@ -179,9 +189,16 @@ namespace UnderdogCity
                 NearestCar.Animator.SetBool("Open", 0.0f < time && time < 1f);
                 transform.position = Vector3.Lerp(NearestCar.AnimDrivePosition.transform.position, NearestCar.AnimEnterPosition.transform.position, time / 1.3f);
                 transform.rotation = Quaternion.Lerp(NearestCar.AnimDrivePosition.transform.rotation, NearestCar.AnimEnterPosition.transform.rotation, time / 1.3f);
+
+                if (time < 0.2f && time + Time.fixedDeltaTime >= 0.2f)
+                    NearestCar.AudioSource.PlayOneShot(NearestCar.OpenClip);
+                if (time < 1.2f && time + Time.fixedDeltaTime >= 1.2f)
+                    NearestCar.AudioSource.PlayOneShot(NearestCar.CloseClip);
+
                 time += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
             }
+
 
             Rigidbody.useGravity = true;
             MainCollider.enabled = true;
