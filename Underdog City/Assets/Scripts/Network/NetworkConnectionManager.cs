@@ -39,7 +39,7 @@ namespace UnderdogCity
             TriesToConnectToMaster = true;
 
             //Settings (all optional and only for tutorial purpose)
-            PhotonNetwork.OfflineMode = true;           //true would "fake" an online connection
+            PhotonNetwork.OfflineMode = false;           //true would "fake" an online connection
             PhotonNetwork.NickName = "PlayerName";       //to set a player name
             PhotonNetwork.AutomaticallySyncScene = true; //to call PhotonNetwork.LoadLevel()
             PhotonNetwork.GameVersion = "v1";            //only people with the same game version can play together
@@ -97,7 +97,8 @@ namespace UnderdogCity
             base.OnJoinedRoom();
             TriesToConnectToRoom = false;
 
-            Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players In Room: " + PhotonNetwork.CurrentRoom.PlayerCount + " | RoomName: " + PhotonNetwork.CurrentRoom.Name);
+            
+            Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players In Room: " + PhotonNetwork.CurrentRoom.PlayerCount + " | RoomName: " + PhotonNetwork.CurrentRoom.Name + " Region: " + PhotonNetwork.CloudRegion);
             //if(PhotonNetwork.IsMasterClient && SceneManager.GetActiveScene().name != "Network")
             //    PhotonNetwork.LoadLevel("Network");
             if(PhotonNetwork.IsMasterClient && SceneManager.GetActiveScene().name != "Main")

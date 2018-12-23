@@ -9,8 +9,6 @@ namespace UnderdogCity
         [HideInInspector]
         public Animator Animator;
         [HideInInspector]
-        public CarState State;
-        [HideInInspector]
         public GameObject AnimEnterPosition;
         [HideInInspector]
         public GameObject AnimDrivePosition;
@@ -38,10 +36,5 @@ namespace UnderdogCity
         }
 
 
-        public enum CarState
-        {
-            FREE,
-            OCCUPIED
-        }
     }
 }

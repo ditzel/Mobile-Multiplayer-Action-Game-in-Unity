@@ -69,13 +69,24 @@ namespace UnderdogCity
                 stream.SendNext(transform.position);
                 stream.SendNext(Player.Input.LookX);
                 stream.SendNext(Player.Input.LookZ);
+                stream.SendNext(Player.State);
             }
             else
             {
                 RemotePlayerPosition = (Vector3)stream.ReceiveNext();
                 RemoteLookX = (float)stream.ReceiveNext();
                 RemoteLookZ = (float)stream.ReceiveNext();
+                var state = (Player.PlayerState)stream.ReceiveNext();
 
+                //Enter
+                if (state == Player.PlayerState.TRANSITION && Player.State == Player.PlayerState.NORMAL)
+                    Player.StartCoroutine(Player.EnterCarAnimation());
+                //Exit
+                if (state == Player.PlayerState.TRANSITION && Player.State == Player.PlayerState.IN_CAR)
+                    Player.StartCoroutine(Player.ExitCarAnimation());
+
+
+                Player.State = state;
             }
         }
     }

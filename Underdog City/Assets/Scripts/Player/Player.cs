@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UnderdogCity
 {
-    public class Player : MonoBehaviourPun
+    public class Player : MonoBehaviourPunCallbacks
     {
         [HideInInspector]
         public InputStr Input;
@@ -97,8 +97,13 @@ namespace UnderdogCity
                     transform.position = NearestCar.AnimDrivePosition.transform.position;
                     transform.rotation = NearestCar.AnimDrivePosition.transform.rotation;
 
+
                     break;
             }
+
+            Rigidbody.useGravity = State == PlayerState.NORMAL;
+            MainCollider.enabled = State == PlayerState.NORMAL;
+            CharacterAnimator.SetBool("InCar", State == PlayerState.IN_CAR);
         }
 
         private void LateUpdate()
@@ -127,34 +132,29 @@ namespace UnderdogCity
 
         public void EnterCar()
         {
-            switch (NearestCar.State) {
-                case CarAnimation.CarState.FREE:
-                    if (NearestCar != null && State == PlayerState.NORMAL)
-                    {
-                        State = PlayerState.TRANSITION;
-                        NearestCar.State = CarAnimation.CarState.OCCUPIED;
-                        StartCoroutine(EnterCarAnimation());
-                    }
-                    break;
-                case CarAnimation.CarState.OCCUPIED:
-                    if (State == PlayerState.IN_CAR)
-                    {
-                        State = PlayerState.TRANSITION;
-                        NearestCar.State = CarAnimation.CarState.FREE;
-                        StartCoroutine(ExitCarAnimation());
-                    }
-                    break;
+            if (State == PlayerState.IN_CAR)
+            {
+                State = PlayerState.TRANSITION;
+                NearestCar.CarPhysics.State = CarPhysics.CarState.FREE;
+                StartCoroutine(ExitCarAnimation());
+                return;
+            }
+
+            if (NearestCar.CarPhysics.State == CarPhysics.CarState.FREE && NearestCar != null && State == PlayerState.NORMAL) { 
+                NearestCar.CarPhysics.photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+                State = PlayerState.TRANSITION;
+                NearestCar.CarPhysics.State = CarPhysics.CarState.OCCUPIED;
+                StartCoroutine(EnterCarAnimation());
             }
         }
+
+
 
         public IEnumerator EnterCarAnimation()
         {
             //get in
             var time = 0f;
-            CharacterAnimator.SetBool("InCar", true);
             CharacterAnimator.SetTrigger("EnterCar");
-            Rigidbody.useGravity = false;
-            MainCollider.enabled = false;
             const float animTime = 1.8f;
             while (time < animTime)
             {
@@ -200,8 +200,6 @@ namespace UnderdogCity
             }
 
 
-            Rigidbody.useGravity = true;
-            MainCollider.enabled = true;
             State = PlayerState.NORMAL;
         }
 

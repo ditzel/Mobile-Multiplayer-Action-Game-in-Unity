@@ -11,8 +11,6 @@ namespace UnderdogCity
     {
         [Header("UC Game Manager")]
 
-        public Player PlayerPrefab;
-
         [HideInInspector]
         public Player LocalPlayer;
 
@@ -28,7 +26,9 @@ namespace UnderdogCity
         // Use this for initialization
         void Start()
         {
-            LocalPlayer = PhotonNetwork.Instantiate(PlayerPrefab.gameObject.name, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+            LocalPlayer = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity).GetComponent<Player>();
+            if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.InstantiateSceneObject("Car", new Vector3(0, 1, 20), Quaternion.identity);
         }
 
         // Update is called once per frame

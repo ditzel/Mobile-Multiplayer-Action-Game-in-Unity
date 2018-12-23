@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnderdogCity
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class CarPhysics : MonoBehaviour {
+    public class CarPhysics : MonoBehaviourPun, IPunObservable {
 
         [HideInInspector]
         public InputStr Input;
@@ -17,6 +18,17 @@ namespace UnderdogCity
 
         protected Rigidbody Rigidbody;
         public Vector3 CenterOfMass;
+
+        [HideInInspector]
+        public NetworkStr Network;
+        public struct NetworkStr
+        {
+            public Vector3 Position;
+            public Quaternion Rotation;
+        }
+
+        [HideInInspector]
+        public CarState State;
 
         public WheelInfo[] Wheels;
 
@@ -49,6 +61,12 @@ namespace UnderdogCity
             }
 
             Rigidbody.AddForceAtPosition(transform.up * Rigidbody.velocity.magnitude * -0.1f * Grip, transform.position + transform.rotation * CenterOfMass);
+
+            if (!photonView.IsMine)
+            {
+                Rigidbody.position = Vector3.MoveTowards(Rigidbody.position, Network.Position, Time.fixedDeltaTime);
+                Rigidbody.rotation = Quaternion.RotateTowards(Rigidbody.rotation, Network.Rotation, Time.fixedDeltaTime * 90f);
+            }
         }
 
         void OnDrawGizmos()
@@ -81,6 +99,37 @@ namespace UnderdogCity
             }
         }
 
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                if (!photonView.IsMine)
+                    return;
+                stream.SendNext(Input.Forward);
+                stream.SendNext(Input.Steer);
+                stream.SendNext(State);
+                
+                stream.SendNext(Rigidbody.position);
+                stream.SendNext(Rigidbody.rotation);
+                stream.SendNext(Rigidbody.velocity);
+                stream.SendNext(Rigidbody.angularVelocity);
+            }
+            else
+            {
+                Input.Forward = (float)stream.ReceiveNext();
+                Input.Steer = (float)stream.ReceiveNext();
+                State = (CarState)stream.ReceiveNext();
+
+                Network.Position = (Vector3)stream.ReceiveNext();
+                Network.Rotation = (Quaternion)stream.ReceiveNext();
+                Rigidbody.velocity = (Vector3)stream.ReceiveNext();
+                Rigidbody.angularVelocity = (Vector3)stream.ReceiveNext();
+
+                float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.timestamp));
+                Network.Position += Rigidbody.velocity * lag;
+            }
+        }
+
         [System.Serializable]
         public struct WheelInfo
         {
@@ -91,5 +140,13 @@ namespace UnderdogCity
             [HideInInspector]
             public float Rotation;
         }
+
+        [System.Serializable]
+        public enum CarState
+        {
+            FREE = 0,
+            OCCUPIED = 1
+        }
+
     }
 }
