@@ -1,0 +1,242 @@
+fileFormatVersion: 2
+guid: 1d040f4428e2baf448d1fddb1bf73552
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Back
+    100004: //RootNode
+    100006: DogMesh
+    100008: EarL
+    100010: EarL_end
+    100012: EarR
+    100014: EarR_end
+    100016: FootL
+    100018: FootL_end
+    100020: FootR
+    100022: FootR_end
+    100024: HandL
+    100026: HandL_end
+    100028: HandR
+    100030: HandR_end
+    100032: Head
+    100034: Head_end
+    100036: KneeBL
+    100038: KneeBL_end
+    100040: KneeBR
+    100042: KneeBR_end
+    100044: KneeFL
+    100046: KneeFL_end
+    100048: KneeFR
+    100050: KneeFR_end
+    100052: LowerHandL
+    100054: LowerHandL_end
+    100056: LowerHandR
+    100058: LowerHandR_end
+    100060: LowerLagR
+    100062: LowerLagR_end
+    100064: LowerLegL
+    100066: LowerLegL_end
+    100068: Neck
+    100070: Root
+    100072: Tail
+    100074: Tail_end
+    100076: UpperHandL
+    100078: UpperHandR
+    100080: UpperLegL
+    100082: UpperLegR
+    400000: Armature
+    400002: Back
+    400004: //RootNode
+    400006: DogMesh
+    400008: EarL
+    400010: EarL_end
+    400012: EarR
+    400014: EarR_end
+    400016: FootL
+    400018: FootL_end
+    400020: FootR
+    400022: FootR_end
+    400024: HandL
+    400026: HandL_end
+    400028: HandR
+    400030: HandR_end
+    400032: Head
+    400034: Head_end
+    400036: KneeBL
+    400038: KneeBL_end
+    400040: KneeBR
+    400042: KneeBR_end
+    400044: KneeFL
+    400046: KneeFL_end
+    400048: KneeFR
+    400050: KneeFR_end
+    400052: LowerHandL
+    400054: LowerHandL_end
+    400056: LowerHandR
+    400058: LowerHandR_end
+    400060: LowerLagR
+    400062: LowerLagR_end
+    400064: LowerLegL
+    400066: LowerLegL_end
+    400068: Neck
+    400070: Root
+    400072: Tail
+    400074: Tail_end
+    400076: UpperHandL
+    400078: UpperHandR
+    400080: UpperLegL
+    400082: UpperLegR
+    2100000: Material
+    4300000: DogMesh
+    7400000: Rest
+    7400002: Armature|Action
+    7400004: Armature|Rest
+    7400006: Armature|Rest.001
+    7400008: Armature|Rest.002
+    7400010: Armature|Walk
+    9500000: //RootNode
+    13700000: DogMesh
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Rest
+      takeName: Armature|Rest
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk
+      takeName: Armature|Walk
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 22
+    normalImportMode: 0
+    tangentImportMode: 1
+    normalCalculationMode: 3
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 2
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
