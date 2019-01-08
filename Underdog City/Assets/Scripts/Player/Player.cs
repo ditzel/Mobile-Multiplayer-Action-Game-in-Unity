@@ -47,6 +47,12 @@ namespace UnderdogCity
             SetRagdoll(false);
         }
 
+        public void Pickup()
+        {
+            //do something with it
+            Debug.Log("Player picked it up!");
+        }
+
         private void Update()
         {
             if (Rigidbody == null)
